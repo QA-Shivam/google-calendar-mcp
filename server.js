@@ -8,7 +8,7 @@ import { z } from "zod";
 
 dotenv.config();
 
-console.log("Google Calendar MCP Server Starting...");
+console.error("Google Calendar MCP Server Starting...");
 // create the MCP server
 const server = new McpServer({
     name: "My Calendar",
