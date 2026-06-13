@@ -1,6 +1,6 @@
-# Google Calendar MCP Server
+# sk-mcp-server-google-calendar
 
-A lightweight Model Context Protocol (MCP) server for reading Google Calendar events by date.
+A lightweight Model Context Protocol (MCP) server for reading Google Calendar events by date. This package is intended to be published to npm and run through an MCP client with `npx`.
 
 ## What it does
 
@@ -22,6 +22,12 @@ It returns matching events as simple text entries in the form:
 
 ```bash
 npm install
+```
+
+If you want to test the published package directly, you can run it with:
+
+```bash
+npx -y sk-mcp-server-google-calendar
 ```
 
 ## Environment Variables
@@ -72,17 +78,23 @@ Returns JSON text with either:
 
 ## Example MCP Client Configuration
 
-If you are connecting this server from an MCP client, point the client to the executable command and set the working directory to this project.
+If you are connecting this server from an MCP client after publishing it to npm, use the package name as the command target.
 
 Example:
 
 ```json
 {
   "mcpServers": {
-    "google-calendar": {
-      "command": "node",
-      "args": ["server.js"],
-      "cwd": "c:\\Users\\satya\\OneDrive\\Desktop\\mcp-server-google-calendar"
+    "My Calendar": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "sk-mcp-server-google-calendar"
+      ],
+      "env": {
+        "GOOGLE_PUBLIC_API_KEY": "your_google_api_key",
+        "CALENDAR_ID": "your_calendar_id"
+      }
     }
   }
 }
