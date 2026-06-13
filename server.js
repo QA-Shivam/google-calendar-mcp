@@ -62,7 +62,8 @@ async function getMyCalendarDataByDate(date) {
 
 // register the tool to MCP
 server.tool(
-    "getMyCalendarDataByDate",
+    "getMyCalendarDataByDate", "Retrieve Google Calendar events and meetings for a specified date.",
+
     {
         date: z.string().refine((val) => !isNaN(Date.parse(val)), {
             message: "Invalid date format. Please provide a valid date string.",
